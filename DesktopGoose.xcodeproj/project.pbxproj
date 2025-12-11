@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		/* App */
+		F0001001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000001; };
+		F0001002 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000002; };
+		F0001023 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000023; };
+		/* Overlay */
+		F0001003 /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000003; };
+		F0001004 /* GooseSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000004; };
+		/* Goose */
+		F0001005 /* GooseNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000005; };
+		F0001006 /* GooseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000006; };
+		F0001007 /* GooseAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000007; };
+		/* Behaviors */
+		F0001008 /* BehaviorStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000008; };
+		F0001009 /* WanderBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000009; };
+		F0001010 /* HonkBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000010; };
+		F0001011 /* CursorGrabBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000011; };
+		F0001012 /* MemeDragBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000012; };
+		F0001013 /* WindowPerchBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000013; };
+		/* System */
+		F0001014 /* WindowObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000014; };
+		F0001015 /* CursorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000015; };
+		F0001016 /* ScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000016; };
+		/* Settings */
+		F0001017 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000017; };
+		F0001018 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000018; };
+		/* Resources */
+		F0001020 /* goose.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000020; };
+		F0001021 /* honk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0000021; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F0000000 /* DesktopGoose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesktopGoose.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		/* App */
+		F0000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F0000002 /* MenuBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		F0000019 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0000023 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		/* Overlay */
+		F0000003 /* OverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindow.swift; sourceTree = "<group>"; };
+		F0000004 /* GooseSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooseSceneView.swift; sourceTree = "<group>"; };
+		/* Goose */
+		F0000005 /* GooseNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooseNode.swift; sourceTree = "<group>"; };
+		F0000006 /* GooseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooseController.swift; sourceTree = "<group>"; };
+		F0000007 /* GooseAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooseAnimations.swift; sourceTree = "<group>"; };
+		/* Behaviors */
+		F0000008 /* BehaviorStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorStateMachine.swift; sourceTree = "<group>"; };
+		F0000009 /* WanderBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderBehavior.swift; sourceTree = "<group>"; };
+		F0000010 /* HonkBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonkBehavior.swift; sourceTree = "<group>"; };
+		F0000011 /* CursorGrabBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorGrabBehavior.swift; sourceTree = "<group>"; };
+		F0000012 /* MemeDragBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeDragBehavior.swift; sourceTree = "<group>"; };
+		F0000013 /* WindowPerchBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPerchBehavior.swift; sourceTree = "<group>"; };
+		/* System */
+		F0000014 /* WindowObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowObserver.swift; sourceTree = "<group>"; };
+		F0000015 /* CursorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorController.swift; sourceTree = "<group>"; };
+		F0000016 /* ScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManager.swift; sourceTree = "<group>"; };
+		/* Settings */
+		F0000017 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		F0000018 /* SettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
+		/* Resources */
+		F0000020 /* goose.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = goose.usdz; sourceTree = "<group>"; };
+		F0000021 /* honk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = honk.mp3; path = DesktopGoose/Resources/Sounds/honk.mp3; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0100001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F0200000 = {
+			isa = PBXGroup;
+			children = (
+				F0200001 /* DesktopGoose */,
+				F0200099 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F0200099 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0000000 /* DesktopGoose.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0200001 /* DesktopGoose */ = {
+			isa = PBXGroup;
+			children = (
+				F0200002 /* App */,
+				F0200003 /* Overlay */,
+				F0200004 /* Goose */,
+				F0200005 /* Behaviors */,
+				F0200006 /* System */,
+				F0200007 /* Settings */,
+				F0200008 /* Resources */,
+			);
+			path = DesktopGoose;
+			sourceTree = "<group>";
+		};
+		F0200002 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F0000023 /* main.swift */,
+				F0000001 /* AppDelegate.swift */,
+				F0000002 /* MenuBarController.swift */,
+				F0000019 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F0200003 /* Overlay */ = {
+			isa = PBXGroup;
+			children = (
+				F0000003 /* OverlayWindow.swift */,
+				F0000004 /* GooseSceneView.swift */,
+			);
+			path = Overlay;
+			sourceTree = "<group>";
+		};
+		F0200004 /* Goose */ = {
+			isa = PBXGroup;
+			children = (
+				F0000005 /* GooseNode.swift */,
+				F0000006 /* GooseController.swift */,
+				F0000007 /* GooseAnimations.swift */,
+			);
+			path = Goose;
+			sourceTree = "<group>";
+		};
+		F0200005 /* Behaviors */ = {
+			isa = PBXGroup;
+			children = (
+				F0000008 /* BehaviorStateMachine.swift */,
+				F0000009 /* WanderBehavior.swift */,
+				F0000010 /* HonkBehavior.swift */,
+				F0000011 /* CursorGrabBehavior.swift */,
+				F0000012 /* MemeDragBehavior.swift */,
+				F0000013 /* WindowPerchBehavior.swift */,
+			);
+			path = Behaviors;
+			sourceTree = "<group>";
+		};
+		F0200006 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				F0000014 /* WindowObserver.swift */,
+				F0000015 /* CursorController.swift */,
+				F0000016 /* ScreenManager.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		F0200007 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F0000017 /* Preferences.swift */,
+				F0000018 /* SettingsWindowController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F0200008 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F0000020 /* goose.usdz */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F0300001 /* DesktopGoose */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0400001 /* Build configuration list for PBXNativeTarget "DesktopGoose" */;
+			buildPhases = (
+				F0300002 /* Sources */,
+				F0100001 /* Frameworks */,
+				F0300003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DesktopGoose;
+			productName = DesktopGoose;
+			productReference = F0000000 /* DesktopGoose.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0500001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					F0300001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = F0400002 /* Build configuration list for PBXProject "DesktopGoose" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F0200000;
+			productRefGroup = F0200099 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0300001 /* DesktopGoose */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0300003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0001020 /* goose.usdz in Resources */,
+				F0001021 /* honk.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0300002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0001023 /* main.swift in Sources */,
+				F0001001 /* AppDelegate.swift in Sources */,
+				F0001002 /* MenuBarController.swift in Sources */,
+				F0001003 /* OverlayWindow.swift in Sources */,
+				F0001004 /* GooseSceneView.swift in Sources */,
+				F0001005 /* GooseNode.swift in Sources */,
+				F0001006 /* GooseController.swift in Sources */,
+				F0001007 /* GooseAnimations.swift in Sources */,
+				F0001008 /* BehaviorStateMachine.swift in Sources */,
+				F0001009 /* WanderBehavior.swift in Sources */,
+				F0001010 /* HonkBehavior.swift in Sources */,
+				F0001011 /* CursorGrabBehavior.swift in Sources */,
+				F0001012 /* MemeDragBehavior.swift in Sources */,
+				F0001013 /* WindowPerchBehavior.swift in Sources */,
+				F0001014 /* WindowObserver.swift in Sources */,
+				F0001015 /* CursorController.swift in Sources */,
+				F0001016 /* ScreenManager.swift in Sources */,
+				F0001017 /* Preferences.swift in Sources */,
+				F0001018 /* SettingsWindowController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F0600001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F0600002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		F0600003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = DesktopGoose/App/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DesktopGoose;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F0600004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = DesktopGoose/App/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DesktopGoose;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F0400001 /* Build configuration list for PBXNativeTarget "DesktopGoose" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0600003 /* Debug */,
+				F0600004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0400002 /* Build configuration list for PBXProject "DesktopGoose" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0600001 /* Debug */,
+				F0600002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F0500001 /* Project object */;
+}
+

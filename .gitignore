@@ -1,0 +1,45 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+*.moved-aside
+
+# Xcode user data
+xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Development
+*.swp
+*.swo
+*~
+
