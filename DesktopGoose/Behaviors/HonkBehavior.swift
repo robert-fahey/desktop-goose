@@ -75,8 +75,7 @@ class HonkBehavior: GooseBehavior {
     
     private func playHonkSound() {
         // Try to play from loaded sounds
-        if !honkSounds.isEmpty {
-            let soundURL = honkSounds.randomElement()!
+        if !honkSounds.isEmpty, let soundURL = honkSounds.randomElement() {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
                 audioPlayer?.volume = 0.7
@@ -91,4 +90,6 @@ class HonkBehavior: GooseBehavior {
         NSSound.beep()
     }
 }
+
+
 

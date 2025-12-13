@@ -66,6 +66,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let mainScreen = NSScreen.main {
             NSLog("Creating overlay window for screen: \(mainScreen.frame)")
             let window = OverlayWindow(screen: mainScreen)
+            
+            // Set up goose click handler
+            window.onGooseClicked = { [weak self] in
+                self?.handleGooseClicked()
+            }
+            
             window.orderFrontRegardless()
             overlayWindows.append(window)
             NSLog("Overlay window created and shown")
@@ -84,13 +90,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    private var settingsWindowController: SettingsWindowController?
+    
     private func openSettings() {
-        // Settings window will be implemented later
-        let alert = NSAlert()
-        alert.messageText = "Settings"
-        alert.informativeText = "Settings panel coming soon! For now, enjoy the chaos."
-        alert.alertStyle = .informational
-        alert.addButton(withTitle: "OK")
-        alert.runModal()
+        if settingsWindowController == nil {
+            settingsWindowController = SettingsWindowController()
+        }
+        settingsWindowController?.showWindow(nil)
+        settingsWindowController?.window?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    /// Handle when the goose is clicked
+    private func handleGooseClicked() {
+        // Trigger honking behavior
+        gooseController?.requestStateTransition(to: .honking)
     }
 }

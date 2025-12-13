@@ -25,6 +25,14 @@
 		F0001011 /* CursorGrabBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000011; };
 		F0001012 /* MemeDragBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000012; };
 		F0001013 /* WindowPerchBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000013; };
+		F0001028 /* ChaseBallBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000028; };
+		F0001030 /* SleepBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000030; };
+		F0001038 /* FurnitureMoveBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000038; };
+		F0001040 /* MouseChaseBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000040; };
+		F0001042 /* PlayWithBallBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000042; };
+		F0001044 /* PoopBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000044; };
+		F0001046 /* Poop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000046; };
+		F0001052 /* WatchTVBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000052; };
 		/* System */
 		F0001014 /* WindowObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000014; };
 		F0001015 /* CursorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000015; };
@@ -32,9 +40,27 @@
 		/* Settings */
 		F0001017 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000017; };
 		F0001018 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000018; };
+		/* Objects */
+		F0001024 /* DesktopObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000024; };
+		F0001025 /* ObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000025; };
 		/* Resources */
 		F0001020 /* goose.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000020; };
 		F0001021 /* honk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0000021; };
+		F0001027 /* ball_roll.wav in Resources */ = {isa = PBXBuildFile; fileRef = F0000027; };
+		F0001026 /* poolball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000026; };
+		F0001070 /* football.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000070; };
+		F0001029 /* plant.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000029; };
+		F0001071 /* plant2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000071; };
+		F0001072 /* plant3.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000072; };
+		F0001073 /* plant4.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000073; };
+		F0001036 /* couch.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000036; };
+		F0001037 /* tv.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000037; };
+		F0001048 /* box.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000048; };
+		F0001050 /* bed.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000050; };
+		F0001060 /* droid.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F0000060; };
+		F0001061 /* Droid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000061; };
+		F0001062 /* FleeFromDroidBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000062; };
+		F0001080 /* PlantChaosBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000080; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +84,14 @@
 		F0000011 /* CursorGrabBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorGrabBehavior.swift; sourceTree = "<group>"; };
 		F0000012 /* MemeDragBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeDragBehavior.swift; sourceTree = "<group>"; };
 		F0000013 /* WindowPerchBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPerchBehavior.swift; sourceTree = "<group>"; };
+		F0000028 /* ChaseBallBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseBallBehavior.swift; sourceTree = "<group>"; };
+		F0000030 /* SleepBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepBehavior.swift; sourceTree = "<group>"; };
+		F0000038 /* FurnitureMoveBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnitureMoveBehavior.swift; sourceTree = "<group>"; };
+		F0000040 /* MouseChaseBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseChaseBehavior.swift; sourceTree = "<group>"; };
+		F0000042 /* PlayWithBallBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayWithBallBehavior.swift; sourceTree = "<group>"; };
+		F0000044 /* PoopBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoopBehavior.swift; sourceTree = "<group>"; };
+		F0000046 /* Poop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poop.swift; sourceTree = "<group>"; };
+		F0000052 /* WatchTVBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTVBehavior.swift; sourceTree = "<group>"; };
 		/* System */
 		F0000014 /* WindowObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowObserver.swift; sourceTree = "<group>"; };
 		F0000015 /* CursorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorController.swift; sourceTree = "<group>"; };
@@ -65,9 +99,27 @@
 		/* Settings */
 		F0000017 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		F0000018 /* SettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
+		/* Objects */
+		F0000024 /* DesktopObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopObject.swift; sourceTree = "<group>"; };
+		F0000025 /* ObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectManager.swift; sourceTree = "<group>"; };
 		/* Resources */
 		F0000020 /* goose.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = goose.usdz; sourceTree = "<group>"; };
 		F0000021 /* honk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = honk.mp3; path = DesktopGoose/Resources/Sounds/honk.mp3; sourceTree = SOURCE_ROOT; };
+		F0000027 /* ball_roll.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ball_roll.wav; path = DesktopGoose/Resources/Sounds/ball_roll.wav; sourceTree = SOURCE_ROOT; };
+		F0000026 /* poolball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = poolball.usdz; sourceTree = "<group>"; };
+		F0000070 /* football.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = football.usdz; sourceTree = "<group>"; };
+		F0000029 /* plant.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = plant.usdz; sourceTree = "<group>"; };
+		F0000071 /* plant2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = plant2.usdz; sourceTree = "<group>"; };
+		F0000072 /* plant3.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = plant3.usdz; sourceTree = "<group>"; };
+		F0000073 /* plant4.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = plant4.usdz; sourceTree = "<group>"; };
+		F0000036 /* couch.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = couch.usdz; sourceTree = "<group>"; };
+		F0000037 /* tv.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tv.usdz; sourceTree = "<group>"; };
+		F0000048 /* box.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = box.usdz; sourceTree = "<group>"; };
+		F0000050 /* bed.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bed.usdz; sourceTree = "<group>"; };
+		F0000060 /* droid.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = droid.usdz; sourceTree = "<group>"; };
+		F0000061 /* Droid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Droid.swift; sourceTree = "<group>"; };
+		F0000062 /* FleeFromDroidBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleeFromDroidBehavior.swift; sourceTree = "<group>"; };
+		F0000080 /* PlantChaosBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantChaosBehavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,11 +156,23 @@
 				F0200003 /* Overlay */,
 				F0200004 /* Goose */,
 				F0200005 /* Behaviors */,
+				F0200009 /* Objects */,
 				F0200006 /* System */,
 				F0200007 /* Settings */,
 				F0200008 /* Resources */,
 			);
 			path = DesktopGoose;
+			sourceTree = "<group>";
+		};
+		F0200009 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				F0000024 /* DesktopObject.swift */,
+				F0000025 /* ObjectManager.swift */,
+				F0000046 /* Poop.swift */,
+				F0000061 /* Droid.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		F0200002 /* App */ = {
@@ -150,6 +214,15 @@
 				F0000011 /* CursorGrabBehavior.swift */,
 				F0000012 /* MemeDragBehavior.swift */,
 				F0000013 /* WindowPerchBehavior.swift */,
+				F0000028 /* ChaseBallBehavior.swift */,
+				F0000030 /* SleepBehavior.swift */,
+				F0000038 /* FurnitureMoveBehavior.swift */,
+				F0000040 /* MouseChaseBehavior.swift */,
+				F0000042 /* PlayWithBallBehavior.swift */,
+				F0000044 /* PoopBehavior.swift */,
+				F0000052 /* WatchTVBehavior.swift */,
+				F0000062 /* FleeFromDroidBehavior.swift */,
+				F0000080 /* PlantChaosBehavior.swift */,
 			);
 			path = Behaviors;
 			sourceTree = "<group>";
@@ -177,6 +250,17 @@
 			isa = PBXGroup;
 			children = (
 				F0000020 /* goose.usdz */,
+				F0000026 /* poolball.usdz */,
+				F0000070 /* football.usdz */,
+				F0000029 /* plant.usdz */,
+				F0000071 /* plant2.usdz */,
+				F0000072 /* plant3.usdz */,
+				F0000073 /* plant4.usdz */,
+				F0000036 /* couch.usdz */,
+				F0000037 /* tv.usdz */,
+				F0000048 /* box.usdz */,
+				F0000050 /* bed.usdz */,
+				F0000060 /* droid.usdz */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -241,6 +325,18 @@
 			files = (
 				F0001020 /* goose.usdz in Resources */,
 				F0001021 /* honk.mp3 in Resources */,
+				F0001026 /* poolball.usdz in Resources */,
+				F0001070 /* football.usdz in Resources */,
+				F0001029 /* plant.usdz in Resources */,
+				F0001071 /* plant2.usdz in Resources */,
+				F0001072 /* plant3.usdz in Resources */,
+				F0001073 /* plant4.usdz in Resources */,
+				F0001036 /* couch.usdz in Resources */,
+				F0001037 /* tv.usdz in Resources */,
+				F0001048 /* box.usdz in Resources */,
+				F0001050 /* bed.usdz in Resources */,
+				F0001060 /* droid.usdz in Resources */,
+				F0001027 /* ball_roll.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +354,8 @@
 				F0001004 /* GooseSceneView.swift in Sources */,
 				F0001005 /* GooseNode.swift in Sources */,
 				F0001006 /* GooseController.swift in Sources */,
+				F0001024 /* DesktopObject.swift in Sources */,
+				F0001025 /* ObjectManager.swift in Sources */,
 				F0001007 /* GooseAnimations.swift in Sources */,
 				F0001008 /* BehaviorStateMachine.swift in Sources */,
 				F0001009 /* WanderBehavior.swift in Sources */,
@@ -265,6 +363,17 @@
 				F0001011 /* CursorGrabBehavior.swift in Sources */,
 				F0001012 /* MemeDragBehavior.swift in Sources */,
 				F0001013 /* WindowPerchBehavior.swift in Sources */,
+				F0001028 /* ChaseBallBehavior.swift in Sources */,
+				F0001030 /* SleepBehavior.swift in Sources */,
+				F0001038 /* FurnitureMoveBehavior.swift in Sources */,
+				F0001040 /* MouseChaseBehavior.swift in Sources */,
+				F0001042 /* PlayWithBallBehavior.swift in Sources */,
+				F0001044 /* PoopBehavior.swift in Sources */,
+				F0001046 /* Poop.swift in Sources */,
+				F0001052 /* WatchTVBehavior.swift in Sources */,
+				F0001061 /* Droid.swift in Sources */,
+				F0001062 /* FleeFromDroidBehavior.swift in Sources */,
+				F0001080 /* PlantChaosBehavior.swift in Sources */,
 				F0001014 /* WindowObserver.swift in Sources */,
 				F0001015 /* CursorController.swift in Sources */,
 				F0001016 /* ScreenManager.swift in Sources */,

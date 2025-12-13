@@ -3,6 +3,9 @@ import SceneKit
 
 class OverlayWindow: NSWindow {
     
+    /// Callback when goose is clicked
+    var onGooseClicked: (() -> Void)?
+    
     init(screen: NSScreen) {
         super.init(
             contentRect: screen.frame,
@@ -13,8 +16,6 @@ class OverlayWindow: NSWindow {
         
         configureWindow()
         setupSceneView(for: screen)
-        
-        print("OverlayWindow created at \(screen.frame)")
     }
     
     private func configureWindow() {
@@ -35,6 +36,7 @@ class OverlayWindow: NSWindow {
         ]
         
         // Click-through - let clicks pass to apps underneath
+        // We use a global event monitor to detect goose clicks instead
         self.ignoresMouseEvents = true
         
         // Don't show in window lists
@@ -45,18 +47,9 @@ class OverlayWindow: NSWindow {
         // Use bounds (0,0 origin) for the content view, not screen frame
         let viewFrame = NSRect(x: 0, y: 0, width: screen.frame.width, height: screen.frame.height)
         let sceneView = GooseSceneView(frame: viewFrame)
+        sceneView.onGooseClicked = { [weak self] in
+            self?.onGooseClicked?()
+        }
         self.contentView = sceneView
-        
-        print("SceneView frame: \(viewFrame)")
-    }
-    
-    /// Temporarily enable mouse events for goose interaction
-    func enableMouseEvents() {
-        self.ignoresMouseEvents = false
-    }
-    
-    /// Disable mouse events to allow click-through
-    func disableMouseEvents() {
-        self.ignoresMouseEvents = true
     }
 }

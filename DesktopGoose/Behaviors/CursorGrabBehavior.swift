@@ -32,14 +32,11 @@ class CursorGrabBehavior: GooseBehavior {
     
     func enter() {
         phase = .approaching
+        dragProgress = 0
         
-        // Get current cursor position
+        // Get current cursor position in Cocoa coordinates (bottom-left origin)
+        // This matches GooseController's coordinate system
         originalCursorPosition = NSEvent.mouseLocation
-        
-        // Flip Y coordinate (NSEvent uses bottom-left origin)
-        if let screen = NSScreen.main {
-            originalCursorPosition.y = screen.frame.height - originalCursorPosition.y
-        }
         
         // Move toward cursor
         controller?.moveTo(originalCursorPosition)
@@ -66,11 +63,8 @@ class CursorGrabBehavior: GooseBehavior {
     }
     
     private func updateApproaching(controller: GooseController) {
-        // Update target to follow cursor
-        var cursorPos = NSEvent.mouseLocation
-        if let screen = NSScreen.main {
-            cursorPos.y = screen.frame.height - cursorPos.y
-        }
+        // Update target to follow cursor (Cocoa coordinates - bottom-left origin)
+        let cursorPos = NSEvent.mouseLocation
         
         // Check if we've reached the cursor
         let distance = distanceBetween(controller.position, cursorPos)
@@ -81,7 +75,7 @@ class CursorGrabBehavior: GooseBehavior {
             controller.stopMoving()
             controller.honk()
             
-            // Pick a random drag target
+            // Pick a random drag target in Cocoa coordinates
             if let screen = NSScreen.main {
                 dragTarget = CGPoint(
                     x: CGFloat.random(in: 100...(screen.frame.width - 100)),
@@ -100,6 +94,12 @@ class CursorGrabBehavior: GooseBehavior {
         if dragProgress >= 1.0 {
             phase = .dragging
             dragProgress = 0
+            
+            // Stop walk animation - goose is now dragging
+            controller.gooseNode.stopWalkAnimation()
+            
+            // Store the current cursor position as our drag start point
+            originalCursorPosition = NSEvent.mouseLocation
         }
     }
     
@@ -112,20 +112,19 @@ class CursorGrabBehavior: GooseBehavior {
             return
         }
         
-        // Interpolate cursor position
-        var currentCursor = NSEvent.mouseLocation
-        if let screen = NSScreen.main {
-            currentCursor.y = screen.frame.height - currentCursor.y
-        }
+        // Get current cursor position in Cocoa coordinates (bottom-left origin)
+        let currentCursor = NSEvent.mouseLocation
         
-        let newX = currentCursor.x + (dragTarget.x - currentCursor.x) * CGFloat(deltaTime) * 3
-        let newY = currentCursor.y + (dragTarget.y - currentCursor.y) * CGFloat(deltaTime) * 3
+        // Calculate target position (dragTarget is also in Cocoa coordinates)
+        let newX = currentCursor.x + (dragTarget.x - currentCursor.x) * deltaTime * 3
+        let newY = currentCursor.y + (dragTarget.y - currentCursor.y) * deltaTime * 3
         
-        // Move the cursor
+        // Move the cursor - moveCursor expects Cocoa coordinates and handles conversion
         cursorController.moveCursor(to: CGPoint(x: newX, y: newY))
         
-        // Move goose with cursor
-        controller.position = CGPoint(x: newX - 20, y: newY - 20)
+        // Move goose with cursor - goose position uses Cocoa coordinates (bottom-left origin)
+        // Offset the goose slightly so it looks like it's grabbing the cursor
+        controller.position = CGPoint(x: newX - 20, y: newY + 10)
     }
     
     func canTransitionTo(_ state: GooseState) -> Bool {
@@ -139,4 +138,5 @@ class CursorGrabBehavior: GooseBehavior {
         return sqrt(dx * dx + dy * dy)
     }
 }
+
 

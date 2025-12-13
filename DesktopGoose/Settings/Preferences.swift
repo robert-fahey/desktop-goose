@@ -16,6 +16,10 @@ class Preferences {
         static let enableHonk = "enableHonk"
         static let honkVolume = "honkVolume"
         static let launchAtLogin = "launchAtLogin"
+        static let enableBalls = "enableBalls"
+        static let enablePlants = "enablePlants"
+        static let enableFurniture = "enableFurniture"
+        static let enableDroid = "enableDroid"
     }
     
     // MARK: - Chaos Level (0.0 - 1.0)
@@ -122,6 +126,56 @@ class Preferences {
         }
     }
     
+    // MARK: - Object Toggles
+    
+    var enableBalls: Bool {
+        get {
+            if defaults.object(forKey: Keys.enableBalls) == nil {
+                return true // Default enabled
+            }
+            return defaults.bool(forKey: Keys.enableBalls)
+        }
+        set {
+            defaults.set(newValue, forKey: Keys.enableBalls)
+        }
+    }
+    
+    var enablePlants: Bool {
+        get {
+            if defaults.object(forKey: Keys.enablePlants) == nil {
+                return true
+            }
+            return defaults.bool(forKey: Keys.enablePlants)
+        }
+        set {
+            defaults.set(newValue, forKey: Keys.enablePlants)
+        }
+    }
+    
+    var enableFurniture: Bool {
+        get {
+            if defaults.object(forKey: Keys.enableFurniture) == nil {
+                return true
+            }
+            return defaults.bool(forKey: Keys.enableFurniture)
+        }
+        set {
+            defaults.set(newValue, forKey: Keys.enableFurniture)
+        }
+    }
+    
+    var enableDroid: Bool {
+        get {
+            if defaults.object(forKey: Keys.enableDroid) == nil {
+                return true
+            }
+            return defaults.bool(forKey: Keys.enableDroid)
+        }
+        set {
+            defaults.set(newValue, forKey: Keys.enableDroid)
+        }
+    }
+    
     private func updateLaunchAtLogin(_ enabled: Bool) {
         // Use SMAppService for modern macOS (13+) or SMLoginItemSetEnabled for older
         // This is a simplified implementation
@@ -139,6 +193,10 @@ class Preferences {
         enableHonk = true
         honkVolume = 0.7
         launchAtLogin = false
+        enableBalls = true
+        enablePlants = true
+        enableFurniture = true
+        enableDroid = true
     }
 }
 
@@ -149,4 +207,6 @@ private extension Comparable {
         return min(max(self, range.lowerBound), range.upperBound)
     }
 }
+
+
 

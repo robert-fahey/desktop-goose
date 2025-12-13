@@ -7,6 +7,15 @@ enum GooseState: CaseIterable {
     case grabbingCursor
     case draggingMeme
     case perchingOnWindow
+    case chasingBall
+    case sleeping
+    case movingFurniture
+    case chasingMouse
+    case playingWithBall
+    case pooping
+    case watchingTV
+    case fleeingFromDroid
+    case plantChaos
 }
 
 protocol GooseBehavior: AnyObject {
@@ -132,6 +141,24 @@ class BehaviorStateMachine {
                 weight *= 0.8 + chaosLevel * 0.5
             case .idle:
                 weight *= 1.0 - chaosLevel * 0.5 // Less idle when chaotic
+            case .chasingBall:
+                weight = 0 // Not randomly selected, only triggered explicitly
+            case .sleeping:
+                weight = 0 // Not randomly selected, only triggered by idle timeout
+            case .movingFurniture:
+                weight *= 0.5 + chaosLevel  // More likely when chaotic
+            case .chasingMouse:
+                weight = 0  // Not randomly selected, triggered by idle timeout
+            case .playingWithBall:
+                weight *= 1.0 + chaosLevel  // More likely when chaotic
+            case .pooping:
+                weight *= 0.8  // Natural behavior
+            case .watchingTV:
+                weight *= 1.0  // Regular chance
+            case .fleeingFromDroid:
+                weight = 0  // Not randomly selected, triggered when droid spawns
+            case .plantChaos:
+                weight *= 1.0 + chaosLevel  // More likely when chaotic, only triggers if plants clustered
             }
             
             candidates.append((state, weight))
@@ -171,4 +198,5 @@ class BehaviorStateMachine {
         }
     }
 }
+
 

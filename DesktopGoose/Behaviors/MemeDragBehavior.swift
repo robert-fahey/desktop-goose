@@ -10,7 +10,7 @@ class MemeDragBehavior: GooseBehavior {
     // Behavior configuration
     var minimumDuration: TimeInterval { 5.0 }
     var maximumDuration: TimeInterval { 10.0 }
-    var weight: Double { 0.6 }
+    var weight: Double { 0.15 }
     var cooldown: TimeInterval { 45.0 }
     
     // Meme node
@@ -152,7 +152,10 @@ class MemeDragBehavior: GooseBehavior {
     private func createMemeNode() {
         guard let sceneView = sceneView else { return }
         
-        let image = memeImages.randomElement()!
+        guard let image = memeImages.randomElement() else {
+            NSLog("⚠️ No meme images available")
+            return
+        }
         
         // Create a plane with the meme texture
         let plane = SCNPlane(width: 150, height: 100)

@@ -97,7 +97,9 @@ class GooseNode: SCNNode {
     private func preserveMaterials(from source: SCNNode, to dest: SCNNode) {
         // Copy geometry materials
         if let sourceGeometry = source.geometry, let destGeometry = dest.geometry {
-            destGeometry.materials = sourceGeometry.materials.map { $0.copy() as! SCNMaterial }
+            destGeometry.materials = sourceGeometry.materials.compactMap { 
+                $0.copy() as? SCNMaterial 
+            }
         }
         
         // Recursively handle child nodes
@@ -220,6 +222,7 @@ class GooseNode: SCNNode {
         isWalking = false
         
         container.removeAction(forKey: "walk")
+        container.removeAction(forKey: "panic")
         
         // Smooth reset to neutral position
         let currentY = container.eulerAngles.y
@@ -228,6 +231,58 @@ class GooseNode: SCNNode {
         let reset = SCNAction.group([
             SCNAction.rotateTo(x: 0, y: currentY, z: 0, duration: 0.2),
             SCNAction.move(to: SCNVector3(currentX, 0, currentZ), duration: 0.2)
+        ])
+        reset.timingMode = .easeOut
+        container.runAction(reset)
+    }
+    
+    /// Fast panic animation when picked up - legs flailing!
+    func playPanicAnimation() {
+        guard let container = modelContainer else { return }
+        
+        // Stop any current walk animation
+        container.removeAction(forKey: "walk")
+        container.removeAction(forKey: "panic")
+        isWalking = true  // Use same flag to track
+        
+        // FAST waddle side to side (panicking!)
+        let waddleLeft = SCNAction.rotateBy(x: 0, y: 0, z: 0.2, duration: 0.05)
+        let waddleRight = SCNAction.rotateBy(x: 0, y: 0, z: -0.2, duration: 0.05)
+        let waddle = SCNAction.sequence([
+            waddleLeft,
+            SCNAction.rotateBy(x: 0, y: 0, z: -0.2, duration: 0.05),
+            waddleRight,
+            SCNAction.rotateBy(x: 0, y: 0, z: 0.2, duration: 0.05)
+        ])
+        
+        // Fast bobbing (like running in air)
+        let bobUp = SCNAction.moveBy(x: 0, y: 6, z: 0, duration: 0.05)
+        bobUp.timingMode = .easeOut
+        let bobDown = SCNAction.moveBy(x: 0, y: -6, z: 0, duration: 0.05)
+        bobDown.timingMode = .easeIn
+        let bob = SCNAction.sequence([bobUp, bobDown, bobUp, bobDown])
+        
+        // Fast head movement (panicked!)
+        let headForward = SCNAction.rotateBy(x: 0.12, y: 0, z: 0, duration: 0.05)
+        let headBack = SCNAction.rotateBy(x: -0.12, y: 0, z: 0, duration: 0.05)
+        let headBob = SCNAction.sequence([headForward, headBack, headForward, headBack])
+        
+        let panicCycle = SCNAction.group([waddle, bob, headBob])
+        container.runAction(SCNAction.repeatForever(panicCycle), forKey: "panic")
+    }
+    
+    /// Stop panic animation
+    func stopPanicAnimation() {
+        guard let container = modelContainer else { return }
+        isWalking = false
+        
+        container.removeAction(forKey: "panic")
+        
+        // Reset to neutral
+        let currentY = container.eulerAngles.y
+        let reset = SCNAction.group([
+            SCNAction.rotateTo(x: 0, y: currentY, z: 0, duration: 0.15),
+            SCNAction.move(to: SCNVector3(0, 0, 0), duration: 0.15)
         ])
         reset.timingMode = .easeOut
         container.runAction(reset)
@@ -319,9 +374,10 @@ class GooseNode: SCNNode {
         ]
         
         // Create a looping idle with random behaviors
+        guard let randomBehavior = behaviors.randomElement() else { return }
         let idleLoop = SCNAction.sequence([
             SCNAction.wait(duration: Double.random(in: 2...4)),
-            behaviors.randomElement()!,
+            randomBehavior,
             SCNAction.wait(duration: Double.random(in: 1...2))
         ])
         
@@ -360,5 +416,46 @@ class GooseNode: SCNNode {
     
     func stopIdleAnimation() {
         modelContainer?.removeAction(forKey: "idle")
+    }
+    
+    // MARK: - Sleep Animations
+    
+    func playSleepAnimation() {
+        guard let container = modelContainer else { return }
+        
+        // Stop other animations
+        stopWalkAnimation()
+        stopIdleAnimation()
+        
+        // Settle down - lower body, tuck head
+        let settleDown = SCNAction.group([
+            SCNAction.rotateBy(x: 0.3, y: 0, z: 0, duration: 0.8),  // Tuck head
+            SCNAction.moveBy(x: 0, y: -20, z: 0, duration: 0.8),   // Lower down
+            SCNAction.scale(by: 0.95, duration: 0.8)               // Slightly smaller (curled up)
+        ])
+        settleDown.timingMode = .easeInEaseOut
+        
+        // Gentle breathing animation
+        let breatheIn = SCNAction.scale(by: 1.02, duration: 2.0)
+        let breatheOut = SCNAction.scale(by: 0.98, duration: 2.0)
+        let breathing = SCNAction.repeatForever(SCNAction.sequence([breatheIn, breatheOut]))
+        
+        container.runAction(SCNAction.sequence([settleDown, breathing]), forKey: "sleep")
+    }
+    
+    func stopSleepAnimation() {
+        guard let container = modelContainer else { return }
+        
+        container.removeAction(forKey: "sleep")
+        
+        // Wake up - return to normal position
+        let wakeUp = SCNAction.group([
+            SCNAction.rotateTo(x: 0, y: container.eulerAngles.y, z: 0, duration: 0.5),
+            SCNAction.moveBy(x: 0, y: 20, z: 0, duration: 0.5),
+            SCNAction.scale(to: 1.0, duration: 0.5)
+        ])
+        wakeUp.timingMode = .easeOut
+        
+        container.runAction(wakeUp)
     }
 }

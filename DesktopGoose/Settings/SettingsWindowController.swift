@@ -9,10 +9,14 @@ class SettingsWindowController: NSWindowController {
     private var windowPerchCheckbox: NSButton!
     private var honkCheckbox: NSButton!
     private var volumeSlider: NSSlider!
+    private var ballsCheckbox: NSButton!
+    private var plantsCheckbox: NSButton!
+    private var furnitureCheckbox: NSButton!
+    private var droidCheckbox: NSButton!
     
     convenience init() {
         let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 400, height: 450),
+            contentRect: NSRect(x: 0, y: 0, width: 480, height: 720),
             styleMask: [.titled, .closable],
             backing: .buffered,
             defer: false
@@ -52,7 +56,7 @@ class SettingsWindowController: NSWindowController {
         stackView.addArrangedSubview(chaosLabel)
         
         chaosSlider = NSSlider(value: 0.7, minValue: 0, maxValue: 1, target: self, action: #selector(chaosChanged))
-        chaosSlider.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        chaosSlider.widthAnchor.constraint(equalToConstant: 430).isActive = true
         stackView.addArrangedSubview(chaosSlider)
         
         let chaosDescLabel = NSTextField(labelWithString: "How chaotic should the goose be?")
@@ -66,7 +70,7 @@ class SettingsWindowController: NSWindowController {
         stackView.addArrangedSubview(speedLabel)
         
         speedSlider = NSSlider(value: 150, minValue: 50, maxValue: 300, target: self, action: #selector(speedChanged))
-        speedSlider.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        speedSlider.widthAnchor.constraint(equalToConstant: 430).isActive = true
         stackView.addArrangedSubview(speedSlider)
         
         // Behavior toggles
@@ -86,13 +90,36 @@ class SettingsWindowController: NSWindowController {
         honkCheckbox = NSButton(checkboxWithTitle: "Honk", target: self, action: #selector(toggleChanged))
         stackView.addArrangedSubview(honkCheckbox)
         
+        // Objects toggles
+        let objectsLabel = NSTextField(labelWithString: "Objects:")
+        objectsLabel.font = NSFont.boldSystemFont(ofSize: 14)
+        stackView.addArrangedSubview(objectsLabel)
+        
+        ballsCheckbox = NSButton(checkboxWithTitle: "Balls (Pool Ball, Football)", target: self, action: #selector(toggleChanged))
+        stackView.addArrangedSubview(ballsCheckbox)
+        
+        plantsCheckbox = NSButton(checkboxWithTitle: "Plants", target: self, action: #selector(toggleChanged))
+        stackView.addArrangedSubview(plantsCheckbox)
+        
+        furnitureCheckbox = NSButton(checkboxWithTitle: "Furniture (Couch, TV, Box)", target: self, action: #selector(toggleChanged))
+        stackView.addArrangedSubview(furnitureCheckbox)
+        
+        droidCheckbox = NSButton(checkboxWithTitle: "Droid Enemy", target: self, action: #selector(toggleChanged))
+        stackView.addArrangedSubview(droidCheckbox)
+        
+        let objectsNote = NSTextField(wrappingLabelWithString: "Note: Object changes take effect on app restart.")
+        objectsNote.font = NSFont.systemFont(ofSize: 11)
+        objectsNote.textColor = .secondaryLabelColor
+        objectsNote.preferredMaxLayoutWidth = 430
+        stackView.addArrangedSubview(objectsNote)
+        
         // Volume
         let volumeLabel = NSTextField(labelWithString: "Honk Volume:")
         volumeLabel.font = NSFont.systemFont(ofSize: 14)
         stackView.addArrangedSubview(volumeLabel)
         
         volumeSlider = NSSlider(value: 0.7, minValue: 0, maxValue: 1, target: self, action: #selector(volumeChanged))
-        volumeSlider.widthAnchor.constraint(equalToConstant: 350).isActive = true
+        volumeSlider.widthAnchor.constraint(equalToConstant: 430).isActive = true
         stackView.addArrangedSubview(volumeSlider)
         
         // Reset button
@@ -103,7 +130,7 @@ class SettingsWindowController: NSWindowController {
         let accessNote = NSTextField(wrappingLabelWithString: "Note: Some features require Accessibility permission in System Settings → Privacy & Security → Accessibility.")
         accessNote.font = NSFont.systemFont(ofSize: 11)
         accessNote.textColor = .secondaryLabelColor
-        accessNote.preferredMaxLayoutWidth = 350
+        accessNote.preferredMaxLayoutWidth = 430
         stackView.addArrangedSubview(accessNote)
     }
     
@@ -116,6 +143,10 @@ class SettingsWindowController: NSWindowController {
         windowPerchCheckbox.state = prefs.enableWindowPerch ? .on : .off
         honkCheckbox.state = prefs.enableHonk ? .on : .off
         volumeSlider.floatValue = prefs.honkVolume
+        ballsCheckbox.state = prefs.enableBalls ? .on : .off
+        plantsCheckbox.state = prefs.enablePlants ? .on : .off
+        furnitureCheckbox.state = prefs.enableFurniture ? .on : .off
+        droidCheckbox.state = prefs.enableDroid ? .on : .off
     }
     
     @objc private func chaosChanged() {
@@ -139,6 +170,14 @@ class SettingsWindowController: NSWindowController {
             prefs.enableWindowPerch = isOn
         case honkCheckbox:
             prefs.enableHonk = isOn
+        case ballsCheckbox:
+            prefs.enableBalls = isOn
+        case plantsCheckbox:
+            prefs.enablePlants = isOn
+        case furnitureCheckbox:
+            prefs.enableFurniture = isOn
+        case droidCheckbox:
+            prefs.enableDroid = isOn
         default:
             break
         }
@@ -153,4 +192,5 @@ class SettingsWindowController: NSWindowController {
         loadPreferences()
     }
 }
+
 
