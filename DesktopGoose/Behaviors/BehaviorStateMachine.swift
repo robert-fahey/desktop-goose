@@ -16,6 +16,8 @@ enum GooseState: CaseIterable {
     case watchingTV
     case fleeingFromDroid
     case plantChaos
+    case bowling
+    case dodgeball
 }
 
 protocol GooseBehavior: AnyObject {
@@ -159,6 +161,10 @@ class BehaviorStateMachine {
                 weight = 0  // Not randomly selected, triggered when droid spawns
             case .plantChaos:
                 weight *= 1.0 + chaosLevel  // More likely when chaotic, only triggers if plants clustered
+            case .bowling:
+                weight *= 1.0  // Regular chance if conditions met
+            case .dodgeball:
+                weight = 0  // Not randomly selected, triggered when droid spawns
             }
             
             candidates.append((state, weight))

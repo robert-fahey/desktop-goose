@@ -37,6 +37,8 @@ class GooseController {
     private var watchTVBehavior: WatchTVBehavior?
     private var fleeFromDroidBehavior: FleeFromDroidBehavior?
     private var plantChaosBehavior: PlantChaosBehavior?
+    private var bowlingBehavior: BowlingBehavior?
+    private var dodgeballBehavior: DodgeballBehavior?
     
     // Poops on the screen
     private var poops: [Poop] = []
@@ -111,6 +113,14 @@ class GooseController {
         // Set up droid spawn callback
         objectManager?.onDroidSpawned = { [weak self] droid in
             self?.handleDroidSpawned(droid)
+        }
+        
+        // Set up dodgeball callbacks
+        objectManager?.onBallHitDroid = { [weak self] in
+            self?.handleBallHitDroid()
+        }
+        objectManager?.onBallHitGoose = { [weak self] in
+            self?.handleBallHitGoose()
         }
         
         // Load honk sound
@@ -276,11 +286,48 @@ class GooseController {
         objectManager?.knockOverClusteredPlants(from: direction)
     }
     
-    /// Handle when droid spawns - goose should flee!
+    /// Get standing plants (for bowling)
+    func getStandingPlants() -> [DesktopObject]? {
+        return objectManager?.getStandingPlants()
+    }
+    
+    /// Get any ball (for bowling/dodgeball)
+    func getAnyBall() -> DesktopObject? {
+        return objectManager?.getAnyBall()
+    }
+    
+    /// Get closest ball to goose (for dodgeball)
+    func getClosestBall() -> DesktopObject? {
+        return objectManager?.getClosestBall(to: position)
+    }
+    
+    /// Handle when droid spawns - goose should flee or play dodgeball!
     private func handleDroidSpawned(_ droid: Droid) {
-        NSLog("🦆😱 Droid spotted! Goose is fleeing!")
+        NSLog("🦆😱 Droid spotted!")
         honk()  // Panic honk!
-        requestStateTransition(to: .fleeingFromDroid)
+        
+        // Check if there are balls to play dodgeball with
+        if let _ = getAnyBall() {
+            NSLog("🎯 Dodgeball time!")
+            requestStateTransition(to: .dodgeball)
+        } else {
+            NSLog("🏃 No balls, running away!")
+            requestStateTransition(to: .fleeingFromDroid)
+        }
+    }
+    
+    /// Handle when ball hits droid (dodgeball scoring)
+    private func handleBallHitDroid() {
+        if currentState == .dodgeball {
+            dodgeballBehavior?.onBallHitDroid()
+        }
+    }
+    
+    /// Handle when droid kicks ball at goose (dodgeball scoring)
+    private func handleBallHitGoose() {
+        if currentState == .dodgeball {
+            dodgeballBehavior?.onBallHitGoose()
+        }
     }
     
     /// Get the TV position
@@ -410,6 +457,8 @@ class GooseController {
         watchTVBehavior = WatchTVBehavior(controller: self)
         fleeFromDroidBehavior = FleeFromDroidBehavior(controller: self)
         plantChaosBehavior = PlantChaosBehavior(controller: self)
+        bowlingBehavior = BowlingBehavior(controller: self)
+        dodgeballBehavior = DodgeballBehavior(controller: self)
         
         // Window observer for perching
         let windowObserver = WindowObserver()
@@ -431,7 +480,9 @@ class GooseController {
                 .pooping: poopBehavior!,
                 .watchingTV: watchTVBehavior!,
                 .fleeingFromDroid: fleeFromDroidBehavior!,
-                .plantChaos: plantChaosBehavior!
+                .plantChaos: plantChaosBehavior!,
+                .bowling: bowlingBehavior!,
+                .dodgeball: dodgeballBehavior!
             ]
         )
     }

@@ -61,6 +61,8 @@
 		F0001061 /* Droid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000061; };
 		F0001062 /* FleeFromDroidBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000062; };
 		F0001080 /* PlantChaosBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000080; };
+		F0001081 /* BowlingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000081; };
+		F0001082 /* DodgeballBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0000082; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +122,8 @@
 		F0000061 /* Droid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Droid.swift; sourceTree = "<group>"; };
 		F0000062 /* FleeFromDroidBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleeFromDroidBehavior.swift; sourceTree = "<group>"; };
 		F0000080 /* PlantChaosBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantChaosBehavior.swift; sourceTree = "<group>"; };
+		F0000081 /* BowlingBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingBehavior.swift; sourceTree = "<group>"; };
+		F0000082 /* DodgeballBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DodgeballBehavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,8 @@
 				F0000052 /* WatchTVBehavior.swift */,
 				F0000062 /* FleeFromDroidBehavior.swift */,
 				F0000080 /* PlantChaosBehavior.swift */,
+				F0000081 /* BowlingBehavior.swift */,
+				F0000082 /* DodgeballBehavior.swift */,
 			);
 			path = Behaviors;
 			sourceTree = "<group>";
@@ -374,6 +380,8 @@
 				F0001061 /* Droid.swift in Sources */,
 				F0001062 /* FleeFromDroidBehavior.swift in Sources */,
 				F0001080 /* PlantChaosBehavior.swift in Sources */,
+				F0001081 /* BowlingBehavior.swift in Sources */,
+				F0001082 /* DodgeballBehavior.swift in Sources */,
 				F0001014 /* WindowObserver.swift in Sources */,
 				F0001015 /* CursorController.swift in Sources */,
 				F0001016 /* ScreenManager.swift in Sources */,

@@ -288,5 +288,49 @@ class Droid: SCNNode {
         let distance = sqrt(dx * dx + dy * dy)
         return distance < catchRadius
     }
+    
+    /// Kick a ball back at the goose (for dodgeball)
+    func kickBallAtGoose(ball: SCNNode, goosePosition: CGPoint) {
+        guard isActive && !isKnockedOver else { return }
+        
+        let ballPos = CGPoint(x: ball.position.x, y: ball.position.y)
+        let dx = goosePosition.x - ballPos.x
+        let dy = goosePosition.y - ballPos.y
+        let distance = sqrt(dx * dx + dy * dy)
+        
+        if distance > 0 {
+            let kickForce: CGFloat = 800  // Droid kicks hard!
+            // Assuming ball has velocity property (DesktopObject)
+            if let desktopBall = ball as? DesktopObject {
+                desktopBall.velocity = CGPoint(
+                    x: dx / distance * kickForce,
+                    y: dy / distance * kickForce
+                )
+                NSLog("🤖⚽ Droid kicks ball at goose!")
+            }
+        }
+    }
+    
+    /// Check if a ball is nearby (for dodgeball reactive kicking)
+    func getNearbyBall(objects: [DesktopObject]) -> DesktopObject? {
+        guard isActive && !isKnockedOver else { return nil }
+        
+        let balls = objects.filter { $0.isThrowable }
+        let droidPos = CGPoint(x: position.x, y: position.y)
+        
+        for ball in balls {
+            let ballPos = CGPoint(x: ball.position.x, y: ball.position.y)
+            let dx = droidPos.x - ballPos.x
+            let dy = droidPos.y - ballPos.y
+            let distance = sqrt(dx * dx + dy * dy)
+            
+            // Check if ball is close and moving slowly (catchable)
+            let ballSpeed = sqrt(ball.velocity.x * ball.velocity.x + ball.velocity.y * ball.velocity.y)
+            if distance < 100 && ballSpeed < 200 {
+                return ball
+            }
+        }
+        return nil
+    }
 }
 

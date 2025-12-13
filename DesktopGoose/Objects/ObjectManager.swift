@@ -13,6 +13,12 @@ class ObjectManager {
     /// Callback when droid spawns (for goose to flee)
     var onDroidSpawned: ((Droid) -> Void)?
     
+    /// Callback when ball hits droid (for dodgeball scoring)
+    var onBallHitDroid: (() -> Void)?
+    
+    /// Callback when ball hits goose (for dodgeball when droid kicks back)
+    var onBallHitGoose: (() -> Void)?
+    
     /// Currently thrown ball that goose might chase
     private(set) var thrownBall: DesktopObject?
     
@@ -92,6 +98,9 @@ class ObjectManager {
                     let impactDirection = CGPoint(x: dx / distance, y: dy / distance)
                     droid.knockOver(impactDirection: impactDirection, impactForce: ballSpeed)
                     
+                    // Notify dodgeball behavior
+                    onBallHitDroid?()
+                    
                     // Ball bounces back
                     ball.velocity.x = -ball.velocity.x * 0.5
                     ball.velocity.y = -ball.velocity.y * 0.5
@@ -100,7 +109,18 @@ class ObjectManager {
                 }
             }
         }
+        
+        // Droid can kick balls back at goose (dodgeball)
+        if let nearbyBall = droid.getNearbyBall(objects: objects) {
+            // Droid has a chance to kick ball back when it's standing
+            if CGFloat.random(in: 0...1) < 0.3 {  // 30% chance per update
+                droid.kickBallAtGoose(ball: nearbyBall, goosePosition: lastGoosePosition)
+            }
+        }
     }
+    
+    /// Store last goose position for droid targeting
+    private var lastGoosePosition: CGPoint = .zero
     
     /// Spawn a pool ball at a random location
     func spawnPoolBall() {
@@ -346,6 +366,40 @@ class ObjectManager {
         NSLog("🌿💥 Goose knocked over all the plants!")
     }
     
+    /// Get all standing plants
+    func getStandingPlants() -> [DesktopObject]? {
+        let plants = objects.filter { $0.isHidingSpot && !$0.isKnockedOver }
+        return plants.isEmpty ? nil : plants
+    }
+    
+    /// Get any ball
+    func getAnyBall() -> DesktopObject? {
+        return objects.first { $0.isThrowable }
+    }
+    
+    /// Get closest ball to a position
+    func getClosestBall(to position: CGPoint) -> DesktopObject? {
+        let balls = objects.filter { $0.isThrowable }
+        guard !balls.isEmpty else { return nil }
+        
+        var closestBall: DesktopObject?
+        var closestDistance: CGFloat = .infinity
+        
+        for ball in balls {
+            let ballPos = CGPoint(x: ball.position.x, y: ball.position.y)
+            let dx = position.x - ballPos.x
+            let dy = position.y - ballPos.y
+            let distance = sqrt(dx * dx + dy * dy)
+            
+            if distance < closestDistance {
+                closestDistance = distance
+                closestBall = ball
+            }
+        }
+        
+        return closestBall
+    }
+    
     /// Get the position of any ball (for goose to play with)
     func getAnyBallPosition() -> CGPoint? {
         if let ball = objects.first(where: { $0.isThrowable }) {
@@ -433,6 +487,9 @@ class ObjectManager {
     
     /// Update all objects (call every frame)
     func update(deltaTime: CGFloat, goosePosition: CGPoint, gooseVelocity: CGPoint) {
+        // Store goose position for droid targeting
+        lastGoosePosition = goosePosition
+        
         let bounds = screenManager.primaryScreenBounds
         
         // Update droid spawn timer
